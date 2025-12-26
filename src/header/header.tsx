@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "../modal/modal";
 import ContactForm from "../contact/contactForm";
+import logo from "../assets/logo.png";
 
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -40,7 +41,11 @@ export default function Header() {
     <header>
       <div className="fixed top-0 left-0 right-0 backdrop-blur-md border-b border-border h-14 select-none z-40 font-primary">
         <div className="mx-auto lg:px-12 flex flex-row items-center justify-between h-full w-full absolute">
-          <h1 className="text-xl font-bold text-primary">Mehdi HAMROUNI</h1>
+          <div className="flex flex-row items-center justify-center gap-x-2">
+            <img src={logo} className="h-14 object-cover" />
+            <h1 className="text-xl font-bold text-primary">Mehdi HAMROUNI</h1>
+          </div>
+
           <button type="button" className="text-background cursor-pointer bg-accent py-2 px-4 hover:bg-hover-accent rounded-xl flex items-center gap-x-2" onClick={() => setIsModalOpen(true)}>
             <span className="material-symbols-outlined text-background">chat</span>
             <span className="font-semibold">Let's Talk!</span>
