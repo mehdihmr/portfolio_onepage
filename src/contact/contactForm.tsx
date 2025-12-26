@@ -41,21 +41,6 @@ export default function ContactForm() {
     await handleSubmit(e);
   };
 
-  // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setIsSuccess(false);
-  //   setIsError(false);
-
-  //   await handleSubmit(e);
-
-  //   if (state.succeeded) {
-  //     setIsSuccess(true);
-  //     setContactForm({ name: "", email: "", phone: "", subject: "", message: "" });
-  //   } else {
-  //     setIsError(true);
-  //   }
-  // };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
