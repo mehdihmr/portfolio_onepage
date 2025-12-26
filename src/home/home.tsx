@@ -2,7 +2,7 @@ import profilePic from "../assets/profile_pic.png";
 
 export default function Home() {
   return (
-    <div id="home" className="mt-14 font-primary flex flex-row items-center justify-center container mx-auto select-none">
+    <section id="home" className="mt-14 font-primary flex flex-row items-center justify-center container mx-auto select-none">
       <div className="flex flex-col justify-center flex-2 gap-y-8 my-8">
         <h1 className="text-7xl font-extrabold">MEHDI HAMROUNI</h1>
         <div>
@@ -18,6 +18,6 @@ export default function Home() {
       <div className="flex-1 hidden md:block">
         <img src={profilePic} />
       </div>
-    </div>
+    </section>
   );
 }

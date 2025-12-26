@@ -2,7 +2,7 @@ import ContactForm from "./contactForm";
 
 export default function Contact() {
   return (
-    <div id="contact" className="container mx-auto py-14 font-primary select-none">
+    <section id="contact" className="container mx-auto py-14 font-primary select-none">
       <h1 className="font-extrabold text-6xl mb-10 text-center text-primary">CONTACT</h1>
       <p className="text-center text-secondary text-xl mb-10">Want to get together or talk tech?</p>
       <div className="flex flex-row flex-wrap items-center justify-center gap-x-6 mb-10">
@@ -30,6 +30,6 @@ export default function Contact() {
       <div className="lg:w-1/2 lg:mx-auto mx-2">
         <ContactForm />
       </div>
-    </div>
+    </section>
   );
 }

@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div id="about" className="bg-surface select-none">
+    <section id="about" className="bg-surface select-none">
       <div className="container mx-auto py-14 font-primary">
         <h1 className="font-extrabold text-6xl mb-10 text-center">ABOUT</h1>
         <div className="flex flex-col lg:w-1/2 mx-auto divide-y divide-border">
@@ -18,6 +18,6 @@ export default function About() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
