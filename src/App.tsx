@@ -5,6 +5,8 @@ import Header from "./header/header";
 import Home from "./home/home";
 import Projects from "./projects/projects";
 import Skills from "./skills/skills";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <About />
       <Contact />
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 }
