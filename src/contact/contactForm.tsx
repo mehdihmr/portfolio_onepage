@@ -107,9 +107,11 @@ export default function ContactForm() {
           onBlur={() => setIsMessage(false)}
         />
       </div>
-      <button type="submit" className="bg-accent hover:bg-hover-accent rounded-xl py-2 text-background cursor-pointer font-semibold">
-        Send
-      </button>
+      <div className="w-full flex items-center justify-center">
+        <button type="submit" className="w-2/3 bg-accent hover:bg-hover-accent rounded-xl py-2 text-background cursor-pointer font-semibold">
+          Send
+        </button>
+      </div>
     </form>
   );
 }

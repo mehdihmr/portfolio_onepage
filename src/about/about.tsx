@@ -3,7 +3,7 @@ export default function About() {
     <section id="about" className="bg-surface select-none">
       <div className="container mx-auto py-14 font-primary">
         <h1 className="font-extrabold text-6xl mb-10 text-center">ABOUT</h1>
-        <div className="flex flex-col lg:w-1/2 mx-auto divide-y divide-border">
+        <div className="flex flex-col lg:w-1/2 mx-2 lg:mx-auto divide-y divide-border">
           <div className="pb-2">
             <h2 className="text-xl">Engineer, not a generalist</h2>
             <p className="text-secondary">Software engineer with a backend-first mindset, working on real-world systems that combine APIs, AI, and hardware integration.</p>

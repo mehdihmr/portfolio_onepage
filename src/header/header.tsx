@@ -40,7 +40,7 @@ export default function Header() {
   return (
     <header>
       <div className="fixed top-0 left-0 right-0 backdrop-blur-md border-b border-border h-14 select-none z-40 font-primary">
-        <div className="mx-auto lg:px-12 flex flex-row items-center justify-between h-full w-full absolute">
+        <div className="px-2 lg:px-12 flex flex-row items-center justify-between h-full w-full absolute">
           <div className="flex flex-row items-center justify-center gap-x-2">
             <img src={logo} className="h-6 w-16 object-cover" />
             <h1 className="text-xl font-bold text-primary hidden lg:block">Mehdi HAMROUNI</h1>
