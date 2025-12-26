@@ -32,7 +32,7 @@ export default function Notification({ message, type }: NotificationProps) {
     >
       <input type="checkbox" checked={isChecked} className="hidden" id="footertoast" readOnly={true} />
 
-      <div className="close cursor-pointer flex items-center justify-start space-x-2  w-full p-4 font-primary font-medium h-14 rounded shadow-lg text-md bg-surface border-2 border-border" title="close" htmlFor="footertoast">
+      <div className="close cursor-pointer flex items-center justify-start space-x-2  w-full p-4 font-primary font-medium h-14 rounded shadow-lg text-md bg-surface border-2 border-border" title="close">
         <span className={`material-symbols-outlined ${icon.color}`}>{icon.name}</span>
         <span>{message}</span>
       </div>
