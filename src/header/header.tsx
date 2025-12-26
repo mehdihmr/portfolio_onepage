@@ -43,7 +43,7 @@ export default function Header() {
         <div className="mx-auto lg:px-12 flex flex-row items-center justify-between h-full w-full absolute">
           <div className="flex flex-row items-center justify-center gap-x-2">
             <img src={logo} className="h-6 w-16 object-cover" />
-            <h1 className="text-xl font-bold text-primary">Mehdi HAMROUNI</h1>
+            <h1 className="text-xl font-bold text-primary hidden lg:block">Mehdi HAMROUNI</h1>
           </div>
 
           <button type="button" className="text-background cursor-pointer bg-accent py-2 px-4 hover:bg-hover-accent rounded-xl flex items-center gap-x-2" onClick={() => setIsModalOpen(true)}>
