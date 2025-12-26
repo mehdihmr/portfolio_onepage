@@ -1,5 +1,7 @@
-import { useState, type FormEvent } from "react";
-import emailjs from "@emailjs/browser";
+import { useState, useEffect } from "react";
+import Notification from "../notification/notification";
+import loadingSVG from "../assets/loading.svg";
+import { useForm } from "@formspree/react";
 
 export default function ContactForm() {
   const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -8,48 +10,60 @@ export default function ContactForm() {
   const [isPhone, setIsPhone] = useState<boolean>(false);
   const [isSubject, setIsSubject] = useState<boolean>(false);
   const [isMessage, setIsMessage] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+  const [state, handleSubmit, reset] = useForm("xbdjlqgy");
+
+  // 2. Add this useEffect to watch for Formspree state changes
+  useEffect(() => {
+    if (state.succeeded) {
+      setIsSuccess(true);
+      setIsError(false);
+      setContactForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      reset();
+    }
+
+    // Check if there are errors in the Formspree state
+    if (state.errors) {
+      setIsError(true);
+      setIsSuccess(false);
+    }
+  }, [state.succeeded, state.errors, reset]);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // 3. Reset local notifications before submitting
+    setIsSuccess(false);
+    setIsError(false);
+
+    // 4. Just trigger the submit. The useEffect above will handle the result.
+    await handleSubmit(e);
+  };
+
+  // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setIsSuccess(false);
+  //   setIsError(false);
+
+  //   await handleSubmit(e);
+
+  //   if (state.succeeded) {
+  //     setIsSuccess(true);
+  //     setContactForm({ name: "", email: "", phone: "", subject: "", message: "" });
+  //   } else {
+  //     setIsError(true);
+  //   }
+  // };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
     setContactForm((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      console.log(import.meta.env.VITE_PUBLIC_KEY);
-      await emailjs.send(
-        import.meta.env.VITE_SERVICE_ID as string,
-        import.meta.env.VITE_TEMPLATE_ID as string,
-        {
-          name: contactForm.name,
-          email: contactForm.email,
-          subject: contactForm.subject,
-        },
-        { publicKey: import.meta.env.VITE_PUBLIC_KEY as string }
-      );
-    } catch (err) {
-      console.error(err);
-    }
-    try {
-      console.log(import.meta.env.VITE_PUBLIC_KEY);
-      await emailjs.send(
-        import.meta.env.VITE_SERVICE_ID as string,
-        import.meta.env.VITE_TEMPLATE_ID_NOTIFICATION as string,
-        {
-          name: contactForm.name,
-          phone: contactForm.phone,
-          subject: contactForm.subject,
-          message: contactForm.message,
-        },
-        { publicKey: import.meta.env.VITE_PUBLIC_KEY as string }
-      );
-    } catch (err) {
-      console.error(err);
-    }
-  };
+
   return (
-    <form className="flex flex-col gap-y-4" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-y-4" onSubmit={onSubmit}>
       <div className="flex flex-row items-center">
         <span className={`material-symbols-outlined p-2 bg-background border-b ${isName ? "border-accent text-accent" : "border-border text-secondary"}`}>person</span>
         <input type="text" className={`bg-background p-2 w-full outline-none border-b ${isName ? "border-accent" : "border-border"} text-primary`} placeholder="Name" name="name" value={contactForm.name} onChange={handleChange} onFocus={() => setIsName(true)} onBlur={() => setIsName(false)} />
@@ -108,10 +122,18 @@ export default function ContactForm() {
         />
       </div>
       <div className="w-full flex items-center justify-center">
-        <button type="submit" className="w-2/3 bg-accent hover:bg-hover-accent rounded-xl py-2 text-background cursor-pointer font-semibold">
-          Send
+        <button type="submit" className={`w-2/3  rounded-xl py-2 text-background font-semibold ${state.submitting ? "cursor-not-allowed bg-accent/50" : "cursor-pointer hover:bg-hover-accent bg-accent"}`} disabled={state.submitting}>
+          {state.submitting ? (
+            <div className="flex justify-center items-center">
+              <img src={loadingSVG} className="h-6" />
+            </div>
+          ) : (
+            "Send"
+          )}
         </button>
       </div>
+      {isSuccess && <Notification message="Email sent" type="info" />}
+      {isError && <Notification message="Error sending email" type="error" />}
     </form>
   );
 }
