@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
@@ -13,8 +14,42 @@ export default function ContactForm() {
     const { name, value } = e.target;
     setContactForm((prev) => ({ ...prev, [name]: value }));
   };
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      console.log(import.meta.env.VITE_PUBLIC_KEY);
+      await emailjs.send(
+        import.meta.env.VITE_SERVICE_ID as string,
+        import.meta.env.VITE_TEMPLATE_ID as string,
+        {
+          name: contactForm.name,
+          email: contactForm.email,
+          subject: contactForm.subject,
+        },
+        { publicKey: import.meta.env.VITE_PUBLIC_KEY as string }
+      );
+    } catch (err) {
+      console.error(err);
+    }
+    try {
+      console.log(import.meta.env.VITE_PUBLIC_KEY);
+      await emailjs.send(
+        import.meta.env.VITE_SERVICE_ID as string,
+        import.meta.env.VITE_TEMPLATE_ID_NOTIFICATION as string,
+        {
+          name: contactForm.name,
+          phone: contactForm.phone,
+          subject: contactForm.subject,
+          message: contactForm.message,
+        },
+        { publicKey: import.meta.env.VITE_PUBLIC_KEY as string }
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
-    <form className="flex flex-col gap-y-4">
+    <form className="flex flex-col gap-y-4" onSubmit={handleSubmit}>
       <div className="flex flex-row items-center">
         <span className={`material-symbols-outlined p-2 bg-background border-b ${isName ? "border-accent text-accent" : "border-border text-secondary"}`}>person</span>
         <input type="text" className={`bg-background p-2 w-full outline-none border-b ${isName ? "border-accent" : "border-border"} text-primary`} placeholder="Name" name="name" value={contactForm.name} onChange={handleChange} onFocus={() => setIsName(true)} onBlur={() => setIsName(false)} />
