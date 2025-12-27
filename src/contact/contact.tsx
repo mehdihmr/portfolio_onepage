@@ -5,7 +5,11 @@ export default function Contact() {
     <section id="contact" className="container mx-auto py-14 font-primary select-none">
       <h1 className="font-extrabold text-6xl mb-10 text-center text-primary">CONTACT</h1>
       <p className="text-center text-secondary text-xl mb-10">Want to get together or talk tech?</p>
-      <div className="flex flex-row flex-wrap items-center justify-center gap-x-18 lg:gap-x-6 mb-10">
+
+      <div className="lg:w-1/2 lg:mx-auto mx-2 mb-10">
+        <ContactForm />
+      </div>
+      <div className="flex flex-row flex-wrap items-center justify-center gap-x-18 lg:gap-x-12">
         <a href="mailto:mehdi.hamrou@gmail.com" className="rounded-xl">
           <span className="material-symbols-outlined rounded-xl text-primary hover:text-accent cursor-pointer" style={{ fontSize: "100px" }}>
             mail
@@ -26,9 +30,6 @@ export default function Contact() {
             <path d="M41,4H9C6.24,4,4,6.24,4,9v32c0,2.76,2.24,5,5,5h32c2.76,0,5-2.24,5-5V9C46,6.24,43.76,4,41,4z M17,20v19h-6V20H17z M11,14.47c0-1.4,1.2-2.47,3-2.47s2.93,1.07,3,2.47c0,1.4-1.12,2.53-3,2.53C12.2,17,11,15.87,11,14.47z M39,39h-6c0,0,0-9.26,0-10 c0-2-1-4-3.5-4.04h-0.08C27,24.96,26,27.02,26,29c0,0.91,0,10,0,10h-6V20h6v2.56c0,0,1.93-2.56,5.81-2.56 c3.97,0,7.19,2.73,7.19,8.26V39z"></path>
           </svg>
         </a>
-      </div>
-      <div className="lg:w-1/2 lg:mx-auto mx-2">
-        <ContactForm />
       </div>
     </section>
   );
