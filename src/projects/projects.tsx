@@ -3,7 +3,7 @@ import { PROJECTS_LIST } from "./projectsList";
 
 export default function Projects() {
   return (
-    <section className="bg-surface select-none" id="projects">
+    <section className="bg-surface" id="projects">
       <div className="container mx-auto py-14 font-primary">
         <h1 className="font-extrabold text-6xl mb-10 text-center">PROJECTS</h1>
         <div className="hidden lg:flex flex-row flex-wrap items-between justify-around min-h-96">

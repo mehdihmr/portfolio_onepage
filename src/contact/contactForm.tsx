@@ -50,11 +50,11 @@ export default function ContactForm() {
   return (
     <form className="flex flex-col gap-y-4" onSubmit={onSubmit}>
       <div className="flex flex-row items-center">
-        <span className={`material-symbols-outlined p-2 bg-background border-b ${isName ? "border-accent text-accent" : "border-border text-secondary"}`}>person</span>
+        <span className={`material-symbols-outlined p-2 bg-background border-b select-none ${isName ? "border-accent text-accent" : "border-border text-secondary"}`}>person</span>
         <input type="text" className={`bg-background p-2 w-full outline-none border-b ${isName ? "border-accent" : "border-border"} text-primary`} placeholder="Name" name="name" value={contactForm.name} onChange={handleChange} onFocus={() => setIsName(true)} onBlur={() => setIsName(false)} />
       </div>
       <div className="flex flex-row items-center ">
-        <span className={`material-symbols-outlined p-2 bg-background border-b ${isMail ? "border-accent text-accent" : "border-border text-secondary"}`}>mail</span>
+        <span className={`material-symbols-outlined p-2 bg-background border-b select-none ${isMail ? "border-accent text-accent" : "border-border text-secondary"}`}>mail</span>
         <input
           required
           type="email"
@@ -68,7 +68,7 @@ export default function ContactForm() {
         />
       </div>
       <div className="flex flex-row items-center ">
-        <span className={`material-symbols-outlined p-2 bg-background border-b ${isPhone ? "border-accent text-accent" : "border-border text-secondary"}`}>phone</span>
+        <span className={`material-symbols-outlined p-2 bg-background border-b select-none ${isPhone ? "border-accent text-accent" : "border-border text-secondary"}`}>phone</span>
         <input
           type="number"
           className={`bg-background p-2 w-full outline-none border-b ${isPhone ? "border-accent" : "border-border"} text-primary`}
@@ -81,7 +81,7 @@ export default function ContactForm() {
         />
       </div>
       <div className="flex flex-row items-center ">
-        <span className={`material-symbols-outlined p-2 bg-background border-b ${isSubject ? "border-accent text-accent" : "border-border text-secondary"}`}>subject</span>
+        <span className={`material-symbols-outlined p-2 bg-background border-b select-none ${isSubject ? "border-accent text-accent" : "border-border text-secondary"}`}>subject</span>
         <input
           type="text"
           className={`bg-background p-2 w-full outline-none border-b ${isSubject ? "border-accent" : "border-border"} text-primary`}

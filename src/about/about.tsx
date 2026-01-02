@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section id="about" className="bg-surface select-none">
+    <section id="about" className="bg-surface">
       <div className="container mx-auto py-14 font-primary">
         <h1 className="font-extrabold text-6xl mb-10 text-center">ABOUT</h1>
         <div className="flex flex-col lg:w-1/2 mx-2 lg:mx-auto divide-y divide-border">

@@ -18,17 +18,17 @@ export default function ProjectItem({ fotoFirst, data }: ProjectItemProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   return (
-    <div className={`flex ${fotoFirst ? "flex-col" : "flex-col-reverse"} w-82 select-none`}>
+    <div className={`flex ${fotoFirst ? "flex-col" : "flex-col-reverse"} w-82`}>
       <div className={`flex ${fotoFirst ? "flex-col" : "flex-col-reverse"} hover:bg-background cursor-pointer p-3 rounded-xl gap-y-2`} onClick={() => setIsModalOpen(true)} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
         <div className="overflow-hidden rounded-xl border-2 border-border">
-          <img src={data.photo} className={`object-cover h-44 w-80  ${isHovered && "scale-110"}`} />
+          <img src={data.photo} className={`object-cover h-44 w-80 select-none  ${isHovered && "scale-110"}`} />
         </div>
         <h1 className={`text-xl font-bold px-2 text-center ${isHovered ? "text-accent underline" : "text-primary"}`}>{data.title}</h1>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title={data.title}>
         <div className="flex flex-col items-center justify-center gap-y-2">
-          <img src={data.photo} className="object-cover w-full rounded-xl" />
+          <img src={data.photo} className="object-cover w-full rounded-xl select-none" />
           <hr className="text-border" />
           <p className="text-primary">{data.description}</p>
           <hr className="text-border" />

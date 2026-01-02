@@ -219,3 +219,15 @@ body {
     opacity: 0;
   }
 }
+
+/* For the selection */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+/* Firefox */
+::-moz-selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}

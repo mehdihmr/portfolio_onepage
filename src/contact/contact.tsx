@@ -2,7 +2,7 @@ import ContactForm from "./contactForm";
 
 export default function Contact() {
   return (
-    <section id="contact" className="container mx-auto py-14 font-primary select-none">
+    <section id="contact" className="container mx-auto py-14 font-primary">
       <h1 className="font-extrabold text-6xl mb-10 text-center text-primary">CONTACT</h1>
       <p className="text-center text-secondary text-xl mb-10">Want to get together or talk tech?</p>
 
@@ -11,12 +11,12 @@ export default function Contact() {
       </div>
       <div className="flex flex-row flex-wrap items-center justify-center gap-x-18 lg:gap-x-12">
         <a href="mailto:mehdi.hamrou@gmail.com" className="rounded-xl">
-          <span className="material-symbols-outlined rounded-xl text-primary hover:text-accent cursor-pointer" style={{ fontSize: "100px" }}>
+          <span className="material-symbols-outlined rounded-xl text-primary hover:text-accent cursor-pointer select-none" style={{ fontSize: "100px" }}>
             mail
           </span>
         </a>
         <a href="tel:+4915259742392" className="rounded-xl">
-          <span className="material-symbols-outlined rounded-xl text-primary hover:text-accent cursor-pointer" style={{ fontSize: "100px" }}>
+          <span className="material-symbols-outlined rounded-xl text-primary hover:text-accent cursor-pointer select-none" style={{ fontSize: "100px" }}>
             phone_enabled
           </span>
         </a>
